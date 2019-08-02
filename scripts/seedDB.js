@@ -10,7 +10,6 @@ const bookSeed = [
         image: "http://books.google.com/books/content?id=sazytgAACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api",
         link: "http://books.google.com/books?id=sazytgAACAAJ&dq=title:The+Hunger+Games&hl=&source=gbs_api",
         title: "The Hunger Games"
-      
     }
 ];
 

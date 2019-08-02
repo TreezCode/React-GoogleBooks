@@ -85,7 +85,6 @@ class Search extends Component {
                                     image={ book.volumeInfo.imageLinks.thumbnail }
                                 >
                                     <button className="btn btn-success" onClick={ () => this.handleBookSave(book.id) }>Save</button>
-
                                 </Book>
                             ))}
                         </List>
