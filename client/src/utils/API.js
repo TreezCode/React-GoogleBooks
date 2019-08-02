@@ -2,11 +2,11 @@ import axios from "axios";
 
 export default {
     // Search google for books by title
-    searchGoogle: function(title) {
+    getGoogleBooks: function(title) {
         return axios.get("/api/google", { params: { title } });
     },
     // Gets all saved books
-    getBooks: function() {
+    getSavedBooks: function() {
         return axios.get("/api/books");
     },
     // Saves a book to the database

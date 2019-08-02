@@ -1,10 +1,11 @@
 import React from "react";
+import "./Form.css";
 
 const Form = ({ title, handleInputChange, handleFormSubmit }) => (
     <>
         <form>
             <div className="form-group">
-                <label htmlFor="Title"><strong>Book</strong></label>
+                <label htmlFor="Title"><strong>Book Search</strong></label>
                 <input
                     className="form-control"
                     id="Title"

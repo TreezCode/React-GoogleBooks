@@ -3,7 +3,7 @@ import { Row, Col } from "../Grid";
 import { ListItem } from "../List";
 import "./Book.css";
 
-const Book = ({ title, authors, link, description, image }) => (
+const Book = ({ title, authors, link, description, image, Button }) => (
     <>
         <ListItem>
             <Row>
@@ -11,7 +11,10 @@ const Book = ({ title, authors, link, description, image }) => (
                     <h3>{ title }</h3>
                 </Col>
                 <Col size="md-3">
-                    <a className="btn btn-primary" target="_blank" rel="noopener noreferrer" href={ link }>View</a>
+                    <a className="btn btn-primary" target="_blank" rel="noopener noreferrer" href={ link }>
+                        View
+                    </a>
+                    <Button />
                 </Col>
             </Row>
             <Row>
