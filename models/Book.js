@@ -23,9 +23,9 @@ const BookSchema = new Schema({
         required: true
     },
     googleId: {
-        type: String, 
+        type: String,
         required: true,
-        unique: true 
+        unique: true
     }
 });
 

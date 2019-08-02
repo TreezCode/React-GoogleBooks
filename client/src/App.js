@@ -1,7 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 // import Navbar from "./components/Navbar";
-import Home from "./pages/Home";
+import Search from "./pages/Search";
 import Saved from "./pages/Saved";
 import NoMatch from "./pages/NoMatch";
 import "./App.css";
@@ -10,8 +10,8 @@ const App = () => (
     <>
         <Router>
             <Switch>
-                <Route exact path="/" component={Home} />
-                <Route exact path="Saved" component={Saved} />
+                <Route exact path="/" component={Search} />
+                <Route exact path="/Saved" component={Saved} />
                 <Route component={NoMatch} />
             </Switch>
         </Router>

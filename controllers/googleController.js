@@ -4,33 +4,33 @@ require('dotenv').config();
 
 module.exports = {
     findAll: (req, res) => {
-        // console.log(req.body);
-        
-        // const title = req.body.query.replace(/\s/g, "+");
+        const title = req.query.title.replace(/\s/g, "+");
         const apiKey = process.env.REACT_APP_GOOGLE_KEY;
         
-        axios
-            .get(`https://www.googleapis.com/books/v1/volumes?q=holes&key=${apiKey}`)
-            .then(results =>
-                results.data.items.filter(
-                result => 
-                    result.volumeInfo.title &&
-                    result.volumeInfo.infoLink &&
-                    result.volumeInfo.authors &&
-                    result.volumeInfo.description &&
-                    result.volumeInfo.imageLinks   
+        // Axios call to api with user input url
+        axios.get(`https://www.googleapis.com/books/v1/volumes?q=${title}&key=${apiKey}`)
+
+        // Filter results to assure title, infoLink, authors, description, & imageLinks present
+        .then(results =>
+            results.data.items.filter(
+            result => 
+                result.volumeInfo.title &&
+                result.volumeInfo.infoLink &&
+                result.volumeInfo.authors &&
+                result.volumeInfo.description &&
+                result.volumeInfo.imageLinks   
+            )
+        )
+        // Filter results to avoid duplicate instances by comparing id to db googleId
+        .then(apiBooks =>
+            db.Book.find().then(dbBooks =>
+                apiBooks.filter(apiBook =>
+                    dbBooks.every(dbBook => dbBook.googleId !== apiBook.id)
                 )
             )
-            .then(apiBooks =>
-                db.Book.find().then(dbBooks =>
-                    apiBooks.filter(apiBook =>
-                        dbBooks.every(dbBook => dbBook.googleId.toString() !== apiBook.id) 
-                    )
-                )
-            )
-            .then(books =>
-                console.log(books)
-            )
-            .catch(err => res.status(422).json(err));
+        )
+        // Send results to client
+        .then(books => res.send(books))
+        .catch(err => res.status(422).json(err))
     }
 };
