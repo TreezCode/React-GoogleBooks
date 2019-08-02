@@ -5,7 +5,7 @@ require('dotenv').config();
 module.exports = {
     findAll: (req, res) => {
         const title = req.query.title.replace(/\s/g, "+");
-        const apiKey = process.env.REACT_APP_GOOGLE_KEY;
+        const apiKey = (process.env.REACT_APP_GOOGLE_KEY || process.env.HEROKU_GOOGLE_KEY);
         
         // Axios call to api with user input url
         axios.get(`https://www.googleapis.com/books/v1/volumes?q=${title}&key=${apiKey}`)
