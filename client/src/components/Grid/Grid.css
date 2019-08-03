@@ -1,9 +1,5 @@
-.card {
-    box-shadow: 0 0 15px -6px;
-}
-
 @media only screen and (max-width: 600px) {
-    .card-body {
+    .col-md-12 {
         padding: 0;
     }
 }

@@ -16,5 +16,5 @@ p {
 }
 
 .thumb {
-    height: fit-content;
+    float: left;
 }
