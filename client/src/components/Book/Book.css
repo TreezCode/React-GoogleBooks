@@ -1,3 +1,12 @@
+p {
+    font-family: 'Karla', sans-serif;
+    line-height: 1.75em
+}
+
+.book-title {
+    font-family: 'Roboto', sans-serif;
+}
+
 .btn {
     min-width: 100px;
 }

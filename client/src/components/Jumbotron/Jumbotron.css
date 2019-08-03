@@ -1,4 +1,14 @@
 .jumbotron {
-    background: #ebebeb;
+    background: url("../../images/book-banner.jpg") top;
+    background-size: cover;
     margin-bottom: 1.25em;
+    box-shadow: 0 0px 15px 0;
+}
+
+.content {
+    background: white;
+    color: rgb(103, 103, 103);
+    padding: 1em;
+    border-radius: 5px;
+    box-shadow: 0 0 15px 3px inset;
 }

@@ -1,0 +1,35 @@
+.blue-font {
+    color: rgb(66,133,244);
+}
+
+.red-font {
+    color: rgb(234,65,65);
+}
+
+.yellow-font {
+    color: rgb(244,183,5);
+}
+
+.green-font {
+    color: rgb(0,161,97);
+}
+
+.btn-primary {
+    background: rgb(66,133,244);   
+}
+
+.btn-success {
+    background: rgb(0,161,97);
+}
+
+.btn-success:hover {
+    background: rgb(1, 144, 86);
+}
+
+.btn-danger {
+    background: rgb(234,65,65);
+}
+
+.btn {
+    box-shadow: 0 0 15px -7px inset black
+}

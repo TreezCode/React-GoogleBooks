@@ -1,4 +1,21 @@
 form {
     padding: 1em;
-    background: #ebebeb
+    background: #ebebeb;
+    border-radius: 5px;
+    border: 1px solid rgb(209, 209, 209);
+}
+
+.form-control:focus {
+    border-color: rgb(154, 154, 154);
+    box-shadow: 0 0 0 0.2rem rgba(169, 169, 169, 0.25)
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus {
+  border: 1px solid rgb(169, 169, 169);
+  -webkit-text-fill-color: rgb(0, 0, 0);
+  -webkit-box-shadow: 0 0 0px 1000px rgb(221, 221, 221) inset;
+  box-shadow: 0 0 0px 1000px rgb(221, 221, 221) inset;
+  transition: background-color 5000s ease-in-out 0s;
 }

@@ -7,6 +7,7 @@ import Form from "../components/Form";
 import Card from "../components/Card";
 import Book from "../components/Book";
 import API from "../utils/API";
+import "./pages.css";
 
 class Search extends Component {
     state = {
@@ -39,12 +40,13 @@ class Search extends Component {
         );
     }
 
-    // Method to handle for submission
+    // Method to handle form submission
     handleFormSubmit = event => {
         event.preventDefault();
         this.getGoogleBooks();
     }
 
+    // Method calls post request to create book data obj and save it in db
     handleBookSave = id => {
         const book = this.state.books.find(book => book.id === id);
         API.saveBook({
@@ -67,8 +69,16 @@ class Search extends Component {
                 <Row>
                     <Col size="md-12">
                         <Jumbotron>
-                            <h1>GoogleBooks Search</h1>
-                            <h4>Search for and Save Books of Interest</h4>
+                        <h1>
+                            <span className="blue-font">G</span>
+                            <span className="red-font">o</span>
+                            <span className="yellow-font">o</span>
+                            <span className="blue-font">g</span>
+                            <span className="green-font">l</span>
+                            <span className="red-font">e</span>
+                            <span>Books Search</span>
+                        </h1>
+                        <h4>Search for and Save Books of Interest</h4>
                         </Jumbotron>
                     </Col>
                 </Row>
@@ -85,7 +95,7 @@ class Search extends Component {
                 </Row>
                 <Row>
                     <Col size="md-12">
-                        {this.state.books.length ? (
+                        { this.state.books.length ? (
                         <Card title="Results">
                             <List>
                                 { this.state.books.map(book => (
@@ -101,10 +111,10 @@ class Search extends Component {
                                             <button className="btn btn-success" onClick={ () => this.handleBookSave(book.id) }>
                                                 Save
                                             </button>
-                                        )}
+                                        ) }
                                     >
                                     </Book>
-                                ))}
+                                )) }
                             </List>
                         </Card>
                         ): <h2 className="text-center my-3">{ this.state.message }</h2> }
