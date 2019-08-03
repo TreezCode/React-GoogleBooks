@@ -5,6 +5,7 @@ import Navbar from "../components/Navbar";
 import Jumbotron from "../components/Jumbotron";
 import Book from "../components/Book";
 import API from "../utils/API";
+import Card from "../components/Card";
 
 class Saved extends Component {
     state = {
@@ -15,6 +16,7 @@ class Saved extends Component {
         this.getSavedBooks();
     }
 
+    // Method to get saved books data from db and set as state
     getSavedBooks = () => {
         API.getSavedBooks()
             .then(res =>
@@ -25,6 +27,7 @@ class Saved extends Component {
             .catch(err => console.log(err));
     }
 
+    // Method to delete saved book from db by id
     handleBookDelete = id => {
         API.deleteBook(id)
             .then(res => this.getSavedBooks());
@@ -33,23 +36,26 @@ class Saved extends Component {
     render() {
         return (
             <>
-                <Navbar />
-                <Container fluid>
-                    <Row>
-                        <Col size="md-12">
-                            <Jumbotron>
-                                <h1>Saved</h1>
-                            </Jumbotron>
-                        </Col>
-                    </Row>
-                    <Row>
-                        <Col size="md-12">
-                            { this.state.books.length ? (
+            <Navbar />
+            <Container fluid>
+                <Row>
+                    <Col size="md-12">
+                        <Jumbotron>
+                            <h1>GoogleBooks Saved</h1>
+                            <h4>Search for and Save Books of Interest</h4>
+                        </Jumbotron>
+                    </Col>
+                </Row>
+                <Row>
+                    <Col size="md-12">
+                        { this.state.books.length ? (
+                        <Card title="Saved Books">
                             <List>
                                 {this.state.books.map(book => (
                                     <Book
                                         key={ book._id }
                                         title={ book.title }
+                                        subtitle={ book.subtitle }
                                         authors={ book.authors }
                                         link={ book.link }
                                         description={ book.description }
@@ -63,10 +69,11 @@ class Saved extends Component {
                                     </Book>
                                 ))}
                             </List>
-                            ): <h2>You Have No Books Saved...</h2> }
-                        </Col>
-                    </Row>
-                </Container>
+                        </Card>
+                        ): <h2 className="text-center">You Have No Books Saved...</h2> }
+                    </Col>
+                </Row>
+            </Container>
             </>
         );
     }

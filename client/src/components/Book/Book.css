@@ -1,0 +1,11 @@
+.btn {
+    min-width: 100px;
+}
+
+.btn-wrap {
+    justify-content: space-evenly;
+}
+
+.thumb {
+    height: fit-content;
+}

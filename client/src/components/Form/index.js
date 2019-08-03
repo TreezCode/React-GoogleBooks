@@ -5,7 +5,7 @@ const Form = ({ title, handleInputChange, handleFormSubmit }) => (
     <>
         <form>
             <div className="form-group">
-                <label htmlFor="Title"><strong>Book Search</strong></label>
+                <div className="mb-1"><small>Book Title:</small></div>
                 <input
                     className="form-control"
                     id="Title"
@@ -17,7 +17,7 @@ const Form = ({ title, handleInputChange, handleFormSubmit }) => (
                     required
                 />
             </div>
-            <div>
+            <div className="d-flex justify-content-end">
                 <button
                     onClick={handleFormSubmit}
                     type="submit"

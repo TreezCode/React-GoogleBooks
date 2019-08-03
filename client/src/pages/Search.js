@@ -4,6 +4,7 @@ import { List } from "../components/List";
 import Navbar from "../components/Navbar";
 import Jumbotron from "../components/Jumbotron";
 import Form from "../components/Form";
+import Card from "../components/Card";
 import Book from "../components/Book";
 import API from "../utils/API";
 
@@ -14,6 +15,7 @@ class Search extends Component {
         message: "Search Google To Begin!"
     }
 
+    // Method to handle input value change and set it to state
     handleInputChange = event => {
         const { name, value } = event.target;
         this.setState({
@@ -21,6 +23,7 @@ class Search extends Component {
         });
     }
 
+    // Method calls get request to Google for book data using title
     getGoogleBooks = () => {
     API.getGoogleBooks(this.state.title)
         .then(res => 
@@ -36,6 +39,7 @@ class Search extends Component {
         );
     }
 
+    // Method to handle for submission
     handleFormSubmit = event => {
         event.preventDefault();
         this.getGoogleBooks();
@@ -46,6 +50,7 @@ class Search extends Component {
         API.saveBook({
             googleId: book.id,
             title: book.volumeInfo.title,
+            subtitle: book.volumeInfo.subtitle,
             link: book.volumeInfo.infoLink,
             authors: book.volumeInfo.authors,
             description: book.volumeInfo.description,
@@ -69,34 +74,39 @@ class Search extends Component {
                 </Row>
                 <Row>
                     <Col size="md-12">
-                        <Form
-                            handleInputChange={ this.handleInputChange }
-                            handleFormSubmit={ this.handleFormSubmit }
-                            title={ this.state.title }
-                        />
+                        <Card title="Book Search">
+                            <Form
+                                handleInputChange={ this.handleInputChange }
+                                handleFormSubmit={ this.handleFormSubmit }
+                                title={ this.state.title }
+                            />
+                        </Card>
                     </Col>
                 </Row>
                 <Row>
                     <Col size="md-12">
                         {this.state.books.length ? (
-                        <List>
-                            { this.state.books.map(book => (
-                                <Book
-                                    key={ book.id }
-                                    title={ book.volumeInfo.title }
-                                    authors={ book.volumeInfo.authors }
-                                    link={ book.volumeInfo.infoLink }
-                                    description={ book.volumeInfo.description }
-                                    image={ book.volumeInfo.imageLinks.thumbnail }
-                                    Button={ () => (
-                                        <button className="btn btn-success" onClick={ () => this.handleBookSave(book.id) }>
-                                            Save
-                                        </button>
-                                    )}
-                                >
-                                </Book>
-                            ))}
-                        </List>
+                        <Card title="Results">
+                            <List>
+                                { this.state.books.map(book => (
+                                    <Book
+                                        key={ book.id }
+                                        title={ book.volumeInfo.title }
+                                        subtitle={ book.volumeInfo.subtitle }
+                                        authors={ book.volumeInfo.authors }
+                                        link={ book.volumeInfo.infoLink }
+                                        description={ book.volumeInfo.description }
+                                        image={ book.volumeInfo.imageLinks.thumbnail }
+                                        Button={ () => (
+                                            <button className="btn btn-success" onClick={ () => this.handleBookSave(book.id) }>
+                                                Save
+                                            </button>
+                                        )}
+                                    >
+                                    </Book>
+                                ))}
+                            </List>
+                        </Card>
                         ): <h2 className="text-center my-3">{ this.state.message }</h2> }
                     </Col>
                 </Row>

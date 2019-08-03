@@ -10,7 +10,7 @@ export const List = ({ children }) =>  (
 );
 
 export const ListItem = ({ children }) => (
-    <li className="list-group-item">
+    <li className="list-group-item mb-2">
         {children}
     </li>
 );
