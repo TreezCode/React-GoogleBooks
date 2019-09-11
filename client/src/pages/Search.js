@@ -1,7 +1,6 @@
 import React, { Component } from "react";
-import { Col, Row, Container } from "../components/Grid";
+import { Col, Row } from "../components/Grid";
 import { List } from "../components/List";
-import Navbar from "../components/Navbar";
 import Jumbotron from "../components/Jumbotron";
 import Form from "../components/Form";
 import Card from "../components/Card";
@@ -17,10 +16,9 @@ class Search extends Component {
     }
 
     // Method to handle input value change and set it to state
-    handleInputChange = event => {
-        const { name, value } = event.target;
+    handleInputChange = e => {
         this.setState({
-            [name]: value
+            [e.target.name]: e.target.value
         });
     }
 
@@ -64,8 +62,6 @@ class Search extends Component {
     render() {
         return (
             <>
-            <Navbar />
-            <Container fluid>
                 <Row>
                     <Col size="md-12">
                         <Jumbotron>
@@ -120,7 +116,6 @@ class Search extends Component {
                         ): <h2 className="text-center my-3">{ this.state.message }</h2> }
                     </Col>
                 </Row>
-            </Container>
             </>
         );
     }

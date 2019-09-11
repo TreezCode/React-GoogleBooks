@@ -6,14 +6,11 @@ module.exports = {
     findAll: (req, res) => {
         const title = req.query.title.replace(/\s/g, "+");
         const apiKey = process.env.REACT_APP_GOOGLE_KEY;
-        
         // Axios call to api with user input url
         axios.get(`https://www.googleapis.com/books/v1/volumes?q=${title}&key=${apiKey}`)
-
         // Filter results to assure title, infoLink, authors, description, & imageLinks present
         .then(results =>
-            results.data.items.filter(
-            result => 
+            results.data.items.filter(result => 
                 result.volumeInfo.title &&
                 result.volumeInfo.infoLink &&
                 result.volumeInfo.authors &&
