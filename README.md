@@ -8,7 +8,7 @@ React-GoogleBooks is a react app which allows users to search and save books usi
 The user is able to search for any book based on the title. The app will return the most relevant books 
 found, along with a link to view on Google and a link to save the book to database.
 
-<img src="https://media.giphy.com/media/VHekHG5ZeJjqEVEMzc/giphy.gif" alt="Google Books">
+<img src="https://media.giphy.com/media/VHekHG5ZeJjqEVEMzc/giphy.gif" alt="Google Books" width="75%">
 
 ## How it Works 🔨
 The app is structured with an MVC paradigm, which assists in logic modularization, allowing for code reuse and parallel development.
